@@ -1,0 +1,46 @@
+flowchart LR
+    subgraph User[User Actions]
+        Login[Login/Register]
+        Post[Post Tweet]
+        Interact[Like/Comment]
+        Follow[Follow User]
+        Search[Search Users]
+    end
+
+    subgraph Processing[Data Processing]
+        Auth[Authentication]
+        Validation[Data Validation]
+        ImageProc[Image Processing]
+        QueryGen[Query Generation]
+    end
+
+    subgraph Storage[Data Storage]
+        UserDB[(Users Table)]
+        TweetDB[(Tweets Table)]
+        LikeDB[(Likes Table)]
+        CommentDB[(Comments Table)]
+        FollowDB[(Follows Table)]
+        FileStore[File Storage]
+    end
+
+    Login --> Auth
+    Post --> Validation
+    Post --> ImageProc
+    Interact --> Validation
+    Follow --> Validation
+    Search --> QueryGen
+
+    Auth --> UserDB
+    Validation --> TweetDB
+    Validation --> LikeDB
+    Validation --> CommentDB
+    Validation --> FollowDB
+    ImageProc --> FileStore
+
+    classDef user fill:#e3f2fd,stroke:#000,stroke-width:2px
+    classDef process fill:#f5f5f5,stroke:#000,stroke-width:2px
+    classDef storage fill:#fff3e0,stroke:#000,stroke-width:2px
+
+    class User user
+    class Processing process
+    class Storage storage

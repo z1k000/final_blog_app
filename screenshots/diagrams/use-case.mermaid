@@ -1,0 +1,35 @@
+flowchart TD
+    subgraph User Actions
+        A[Register]
+        B[Login]
+        C[Create Tweet]
+        D[Like Tweet]
+        E[Comment]
+        F[Follow User]
+        G[Search Users]
+        H[Edit Profile]
+        I[View Profile]
+        J[Upload Image]
+    end
+
+    subgraph Authentication
+        B --> K[Session Management]
+        K --> L[Token Validation]
+    end
+
+    subgraph Profile Management
+        H --> M[Update Bio]
+        H --> N[Change Username]
+        J --> O[Profile Picture]
+        I --> P[View Tweets]
+        I --> Q[View Following]
+        I --> R[View Followers]
+    end
+
+    subgraph Content Management
+        C --> S[Text Content]
+        C --> T[Image Upload]
+        D --> U[Like Counter]
+        E --> V[Comment Thread]
+        F --> W[Follow Status]
+    end

@@ -1,0 +1,55 @@
+flowchart TB
+    subgraph Client[Android Application Layer]
+        direction TB
+        UI[User Interface]
+        subgraph Components
+            Activities[Activities]
+            Fragments[Fragments]
+            Adapters[RecyclerView Adapters]
+            Layouts[XML Layouts]
+        end
+        subgraph Utils
+            SessionMgr[Session Manager]
+            ImageHandler[Image Handler]
+            NetworkUtils[Volley Network Utils]
+        end
+        subgraph Models
+            UserModel[User Model]
+            TweetModel[Tweet Model]
+            CommentModel[Comment Model]
+        end
+    end
+
+    subgraph Network[Network Layer]
+        HTTPS[HTTPS Requests]
+        JSON[JSON Data]
+        MultipartForm[Multipart Form Data]
+    end
+
+    subgraph Server[Server Layer - MyDevil s33]
+        direction TB
+        subgraph Backend[PHP Backend]
+            APIEndpoints[API Endpoints]
+            FileUpload[File Upload Handler]
+            DBHandler[Database Handler]
+        end
+        subgraph Storage
+            MySQL[(MySQL 8.0.39)]
+            FileSystem[File System Storage]
+        end
+    end
+
+    UI --> Components
+    Components --> Utils
+    Components --> Models
+    Utils --> Network
+    Network --> Server
+    APIEndpoints --> Storage
+
+    classDef android fill:#a5d6a7,stroke:#000,stroke-width:2px
+    classDef network fill:#bbdefb,stroke:#000,stroke-width:2px
+    classDef server fill:#ffcc80,stroke:#000,stroke-width:2px
+
+    class Client android
+    class Network network
+    class Server server

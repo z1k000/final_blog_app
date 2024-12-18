@@ -1,0 +1,27 @@
+stateDiagram-v2
+    [*] --> LaunchApp
+    LaunchApp --> CheckSession: Start
+    CheckSession --> MainFeed: Session Valid
+    CheckSession --> LoginScreen: No Valid Session
+    
+    LoginScreen --> ValidateCredentials: Login
+    LoginScreen --> RegisterScreen: Register
+    
+    RegisterScreen --> ValidateRegistration: Submit
+    ValidateRegistration --> LoginScreen: Success
+    ValidateRegistration --> RegisterScreen: Invalid Input
+    
+    ValidateCredentials --> MainFeed: Success
+    ValidateCredentials --> LoginScreen: Invalid
+    
+    MainFeed --> UserProfile: View Profile
+    MainFeed --> SearchUsers: Search
+    MainFeed --> CreateTweet: New Tweet
+    MainFeed --> ViewComments: View Comments
+    
+    CreateTweet --> MainFeed: Post
+    ViewComments --> MainFeed: Back
+    UserProfile --> MainFeed: Back
+    SearchUsers --> MainFeed: Back
+    
+    MainFeed --> [*]: Logout

@@ -1,0 +1,46 @@
+erDiagram
+    users ||--o{ tweets : creates
+    users ||--o{ comments : writes
+    users ||--o{ likes : makes
+    users ||--o{ follows : follower
+    users ||--o{ follows : following
+    tweets ||--o{ comments : has
+    tweets ||--o{ likes : receives
+
+    users {
+        int user_id PK
+        string username
+        string email
+        string password
+        string profile_pic
+        text bio
+        timestamp created_at
+    }
+
+    tweets {
+        int tweet_id PK
+        int user_id FK
+        text content
+        string image
+        timestamp created_at
+    }
+
+    comments {
+        int comment_id PK
+        int tweet_id FK
+        int user_id FK
+        text content
+        timestamp created_at
+    }
+
+    likes {
+        int user_id FK
+        int tweet_id FK
+        timestamp created_at
+    }
+
+    follows {
+        int follower_id FK
+        int following_id FK
+        timestamp created_at
+    }

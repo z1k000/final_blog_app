@@ -1,0 +1,38 @@
+flowchart TB
+    subgraph Android[Android Client]
+        UI[User Interface]
+        Activities[Activities]
+        Adapters[Adapters]
+        Models[Data Models]
+        Volley[Volley HTTP Client]
+        Session[Session Manager]
+    end
+
+    subgraph MyDevil[MyDevil Hosting s33.mydevil.net]
+        subgraph Backend[PHP Backend]
+            API[PHP API Endpoints]
+            subgraph Endpoints
+                auth[auth/*.php]
+                tweets[twitter/*.php]
+            end
+            Files[File Storage]
+        end
+        MySQL[(MySQL Database)]
+    end
+
+    UI --> Activities
+    Activities --> Adapters
+    Activities --> Models
+    Activities --> Session
+    Activities --> Volley
+    Volley --> API
+    API --> MySQL
+    API --> Files
+
+    classDef android fill:#a5d6a7,stroke:#000,stroke-width:2px
+    classDef backend fill:#90caf9,stroke:#000,stroke-width:2px
+    classDef database fill:#ffcc80,stroke:#000,stroke-width:2px
+
+    class Android android
+    class Backend backend
+    class MySQL database

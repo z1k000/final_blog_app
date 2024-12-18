@@ -1,0 +1,39 @@
+flowchart TB
+    subgraph Client[Client Security]
+        SessionMgr[Session Manager]
+        InputValid[Input Validation]
+        SecurePrefs[Secure Preferences]
+    end
+
+    subgraph Transfer[Data Transfer]
+        HTTPS[HTTPS Protocol]
+        JSONEnc[JSON Encoding]
+        MultiPart[Multipart Forms]
+    end
+
+    subgraph Server[Server Security]
+        PHPValid[PHP Validation]
+        SQLPrep[SQL Prepared Statements]
+        FileValid[File Validation]
+        PassHash[Password Hashing]
+    end
+
+    subgraph Storage[Secure Storage]
+        DBEnc[Database Encryption]
+        SecureFS[Secure File Storage]
+        UserCred[User Credentials]
+    end
+
+    Client --> Transfer
+    Transfer --> Server
+    Server --> Storage
+
+    classDef client fill:#c8e6c9,stroke:#000,stroke-width:2px
+    classDef transfer fill:#bbdefb,stroke:#000,stroke-width:2px
+    classDef server fill:#fff9c4,stroke:#000,stroke-width:2px
+    classDef storage fill:#ffccbc,stroke:#000,stroke-width:2px
+
+    class Client client
+    class Transfer transfer
+    class Server server
+    class Storage storage

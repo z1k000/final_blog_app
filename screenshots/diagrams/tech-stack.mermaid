@@ -1,0 +1,52 @@
+flowchart TB
+    subgraph Frontend[Frontend Technologies]
+        direction TB
+        Android[Android SDK]
+        Java[Java]
+        XML[XML Layouts]
+        subgraph Libraries[Android Libraries]
+            Volley[Volley]
+            Glide[Glide]
+            RecyclerView[RecyclerView]
+            CardView[CardView]
+            Material[Material Design]
+        end
+    end
+
+    subgraph Backend[Backend Technologies]
+        PHP[PHP 8.1.27]
+        subgraph Server[Server Components]
+            REST[REST API]
+            FileHandling[File Handling]
+            SessionMgmt[Session Management]
+        end
+    end
+
+    subgraph Database[Database Layer]
+        MySQL8[MySQL 8.0.39]
+        subgraph DBFeatures[Database Features]
+            InnoDB[InnoDB Engine]
+            UTF8MB4[UTF8MB4 Encoding]
+            ForeignKeys[Foreign Keys]
+        end
+    end
+
+    subgraph Hosting[Hosting Infrastructure]
+        MyDevil[MyDevil s33]
+        HTTPS[HTTPS Protocol]
+        PHPMyAdmin[phpMyAdmin]
+    end
+
+    Frontend --> Backend
+    Backend --> Database
+    Backend --> Hosting
+
+    classDef frontend fill:#a5d6a7,stroke:#000,stroke-width:2px
+    classDef backend fill:#90caf9,stroke:#000,stroke-width:2px
+    classDef database fill:#ffcc80,stroke:#000,stroke-width:2px
+    classDef hosting fill:#ce93d8,stroke:#000,stroke-width:2px
+
+    class Frontend frontend
+    class Backend backend
+    class Database database
+    class Hosting hosting
